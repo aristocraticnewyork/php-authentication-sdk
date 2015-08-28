@@ -34,7 +34,7 @@ $apiBasicPassword = '';
 
 $header = new Header($apiKey, $apiSecret);
 $encrypt = new Encrypt();
-$encryptedPass = $encrypt->encrypt($apiSecret,$password,16);
+$encryptedPass = $encrypt->encrypt($password, $apiSecret);
 
 $token = $header->createToken($username, $encryptedPass);
 

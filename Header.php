@@ -24,7 +24,7 @@ Class Header {
     public function createToken($username, $encryptedPass) {
         $nonce = $this->createNonce();
         $ts = date('c');
-        $digest = base64_encode(sha1(base64_decode($nonce).$ts.$this->apiSecret,true));
+        $digest = base64_encode(sha1($nonce.$ts.$this->apiSecret,true));
         return sprintf('AuthToken ApiKey="%s", TokenDigest="%s", Nonce="%s", Created="%s", Username="%s", Password="%s"',
             $this->apiKey, $digest, $nonce, $ts, $username, base64_encode($encryptedPass));
     }
